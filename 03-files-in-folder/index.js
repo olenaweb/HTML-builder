@@ -14,8 +14,7 @@ let pathToDir = path.join(__dirname, 'secret-folder');
       fs.stat(pathToFile, (err, stats) => {
         if (err) throw err;
         if (readFile.startsWith('.')) {
-          readFile = readFile.slice(1);
-          filesPart = readFile.split('.');
+          filesPart = readFile.slice(1).split('.');
           filesPart[0] = '.' + filesPart[0];
           filesPart[1] = filesPart[1] === undefined ? '' : filesPart[1];
         } else {

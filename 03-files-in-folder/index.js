@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
-const listDir = require('fs/promises');
+const fm = require('fs/promises');
 const { stdout } = process;
 let pathToDir = path.join(__dirname, 'secret-folder');
 // async
 (async function listOfDir(currentPath) {
   let pathToFile, filesPart;
   try {
-    const files = await listDir.readdir(currentPath);
+    const files = await fm.readdir(currentPath);
     for await (let readFile of files) {
       pathToFile = path.join(__dirname, 'secret-folder', readFile);
       // pathToFile = `${pathToDir}/${readFile}`;

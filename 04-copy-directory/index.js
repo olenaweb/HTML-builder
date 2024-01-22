@@ -15,10 +15,8 @@ async function copyDir(currentFiles, copyFiles) {
   });
   fs.readdir(currentFiles, { withFileTypes: true }, (err, files) => {
     if (err) throw err;
-    // console.log(' files= ', files);
     files.forEach((file) => {
       if (file.isFile()) {
-        // console.log('Dirent.isFile() = ', Dirent.isFile(), 'Dirent.name', Dirent.name);
         fm.copyFile(
           path.join(currentFiles, file.name),
           path.join(copyFiles, file.name),

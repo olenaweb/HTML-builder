@@ -11,7 +11,6 @@ const fm = require('fs/promises');
   const listFiles = await fm.readdir(path.join(__dirname, 'styles'));
   stdout.write('Added file css: \n');
   let nn = 0;
-
   for await (const file of listFiles) {
     if (file.startsWith('.')) {
       filesPart = file.slice(1).split('.');

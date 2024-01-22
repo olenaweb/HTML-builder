@@ -15,13 +15,14 @@ let pathToDir = path.join(__dirname, 'secret-folder');
         if (err) throw err;
         if (readFile.startsWith('.')) {
           filesPart = readFile.slice(1).split('.');
-          filesPart[0] = '.' + filesPart[0];
-          filesPart[1] = filesPart[1] === undefined ? '' : filesPart[1];
         } else {
           filesPart = readFile.split('.');
         }
+        const k = filesPart.length - 1;
+        const partName = k > 0 ? path.basename(readFile, '.' + filesPart[k]) : path.basename(readFile);
+        const partEnd = k > 0 ? filesPart[k] : '';
         if (!stats.isDirectory()) {
-          stdout.write(`${filesPart[0]} - ${filesPart[1]} - ${stats.size}b\n`);
+          stdout.write(`${partName} - ${partEnd} - ${stats.size}b\n`);
         }
       });
     }

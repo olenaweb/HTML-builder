@@ -105,6 +105,7 @@ async function createHtml(temp) {
   try {
     tempHTML = await readTemp();
     await projectDir();
+    // копирование с подкаталогами
     await copyDir(path.join(__dirname, 'assets'), path.join(__dirname, 'project-dist', 'assets'));
     await createStyle();
     await createHtml(tempHTML);

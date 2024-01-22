@@ -7,6 +7,7 @@ let filesPart;
 let tempHTML = '';
 
 async function projectDir() {
+  await fm.rm(path.join(__dirname, 'project-dist'), { recursive: true, force: true });
   await fm.mkdir(path.join(__dirname, 'project-dist'), { recursive: true });
 }
 
